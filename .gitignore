@@ -1,0 +1,10 @@
+php-slurm-*.tar
+tmp-php.ini
+*~
+config.h
+.deps
+*.la
+.libs/
+*.lo
+*.o
+*.so
