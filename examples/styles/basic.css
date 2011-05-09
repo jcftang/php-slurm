@@ -1,0 +1,366 @@
+body {
+	background-color:#c9c9c9;
+	color :#fff;
+	margin-bottom:40px;
+	font-size:7pt;
+}
+/*
+ *	FUNCTION TABLE CHECK
+ */
+#main {
+	margin:40px 40px 40px 40px;	
+	border: solid 1px #333;
+}
+#header_bar {
+	margin:0px 0px 0px 0px;
+	background-color:#191919;
+	height:15px;
+	text-align:left;
+	padding:10px 0px 0px 20px;
+	font-size:11pt;
+	font-weight:bold;
+	border-bottom:10px dashed #191919;
+}
+#function_results {
+	/*background-color:#999;
+	border : solid 1px #333;*/
+}
+table {
+	margin:7px 7px 7px 7px;
+}
+caption {
+	background-color:#000;
+	color:#FFF;
+	font-size:7pt;
+	font-weight:bold;
+	padding:5px 5px 5px 5px;
+	border:solid 1px #444444;	
+}
+
+.table_regular td, .table_buttons td {
+	border:solid 1px #000;
+	font-size : 7pt;
+}
+.over_link {
+	background-color:#00C9B9;
+	cursor:pointer;
+}
+.not_over_link {
+	background-color:#333;
+	cursor:default;
+}
+.table_regular td { 
+	padding:5px 5px 5px 5px;
+	background-color:#333;
+}
+
+.table_regular th,.table_regular .th_style {
+	font-size:7pt;
+	background-color:#000;
+	color:#ccc;
+	font-weight:bold;
+	padding:5px 5px 5px 5px;
+}
+.table_regular th {
+	text-align:center;
+}
+
+.is_link {
+	color:#fff;
+	display:block;
+	padding:5px 5px 5px 5px;
+}
+.no_link {
+	color:#666;
+	display:block;
+	padding:5px 5px 5px 5px;
+}
+
+.table_regular .function_check_exist,.table_regular .function_check_noexist,.table_regular .color_green,
+.table_regular .color_red {
+	padding:0px 0px 0px 0px;
+	width:10px;
+	color:#000;
+	text-align:center;
+	vertical-align:middle;
+}
+.table_regular .color_green, .table_regular .color_red {
+	width:100px;
+}
+
+.table_regular .function_check_exist, .table_regular .color_green {
+	background-color:#3CB371;
+}
+
+.table_regular .function_check_noexist, .table_regular .color_red {
+	background-color:#EE9090;
+}
+.table_regular .color_warning {
+	background-color:#EEC200;
+	color:#000;
+}
+
+.table_regular .node_down {
+	background-color:#EE9090;
+	color : #000;
+}
+
+#function_results {
+	position:absolute;
+}
+#slurm_ping {
+	float:left;
+}
+#partition_main_window {
+	width:50%;
+	float:left;
+}
+#partition_main_window {
+	float:left;
+}
+.basePartitionWindow {
+	float:left;
+}
+
+#main , .table_regular .invisible_to_your_eyes {
+	background-color:#999;
+}
+.table_regular .invisible_to_your_eyes {
+	border:none;
+}
+
+/*	Color Schemes for grid */
+
+.table_regular .color_red0,.table_regular .color_red1,.table_regular .color_red2,
+.table_regular .color_green0,.table_regular .color_green1,.table_regular .color_green2,
+.table_regular .color_orange0,.table_regular .color_orange1,.table_fixed .color_red0,
+.table_fixed .color_red1,.table_fixed .color_red2, .table_fixed .color_green0, .table_fixed .color_green1,
+.table_fixed .color_green2, .table_fixed .color_orange0, .table_fixed .color_orange1,.table_fixed .color_black0 {
+	padding:5px 5px 5px 5px;
+	color:#000;
+	text-align:center;
+	vertical-align:middle;
+	font-size:7pt;
+}
+
+.table_regular .color_red0, .table_fixed .color_red0 {
+	background-color:#000;
+	color:#FFF;
+}
+.table_regular .color_red0_over, .table_fixed .color_red0_over,
+.table_regular .color_red1_over, .table_fixed .color_red1_over,
+.table_regular .color_red2_over, .table_fixed .color_red2_over, 
+.table_regular .color_green0_over, .table_fixed .color_green0_over,
+.table_regular .color_green1_over, .table_fixed .color_green1_over,
+.table_regular .color_orange0_over, .table_fixed .color_orange0_over,
+.table_regular .color_orange1_over, .table_fixed .color_orange1_over,
+.table_regular .color_white0_over, .table_fixed .color_white0_over {
+	background-color:#FFF;
+	border:solid 1px #C9C9C9;
+	color:#000;
+}
+.table_fixed .color_black0 {
+	background-color:#000;
+}
+.table_regular .color_red1, .table_fixed .color_red1 {
+	background-color:#EE3030;
+}
+.table_regular .color_red2, .table_fixed .color_red2 {
+	background-color:#EC5800;
+}
+.table_regular .color_green0, .table_fixed .color_green0 {
+	background-color:#009E60;
+}
+.table_regular .color_green1, .table_fixed .color_green1 {
+	background-color:#507D2A;
+}
+.table_regular .color_green2, .table_fixed .color_green2 {
+	background-color:#00A550;
+}
+.table_regular .color_orange0, .table_fixed .color_orange0 {
+	background-color:#FFA500;
+}
+.table_regular .color_orange1, .table_fixed .color_orange1 {
+	background-color:#f28500;
+}
+.table_regular .color_white0, .table_fixed .color_white0 {
+	background-color:#FFFFFF;
+	color:#000;
+}
+.no_padd,.no_padd td {
+	padding:0px 0px 0px 0px;
+}
+.left_floater {
+	width:200px;
+	margin:0px 7px 0px 0px;
+}
+#node_state_grid {
+	max-width:800px;
+}
+#node_state_grid td {
+}
+.table_regular .table_header_summary, .table_fixed .table_header_summary, .table_regular .not_over_link2 {
+	background-color:#202020;
+	color:#ccc;
+	text-align:center;
+	font-size:7pt;
+}
+#table_legend,#node_partitions_summary {
+	width:200px;
+}
+
+.big_number,.big_number_over {
+	margin-top:3px;
+	font-weight:bold;
+	font-size:7pt;
+	color:#EEE;
+	text-align:center;
+	border:solid 1px #000;
+	background-color:#393939;
+	padding:3px 10px 3px 10px;
+	display:block;
+}
+.table_header_summary .small_number,.table_header_summary .small_number_clickable, .not_over_link2 .is_link2, .not_over_link2 .is_link3 {
+	font-size:6pt;
+	max-width:230px;
+	margin-top:3px;
+	color:#EEE;
+	background-color:#393939;
+	border:solid 1px #000;
+	text-align:center;
+	display:block;
+	padding:5px 5px 5px 5px;
+	vertical-align:middle;
+	overflow:auto;
+	cursor:default;
+}
+.big_number:hover,.small_number_clickable:hover {
+	background-color:#FFF;
+	color:#000;
+	cursor:pointer;
+}
+.not_over_link2 .is_link2:hover, .not_over_link2 .is_link3:hover {
+	background-color:#FFF;
+	color:#000;
+	cursor:pointer;
+}
+.not_over_link2 .is_link3 {
+	font-size:8pt;
+}
+
+.table_regular .table_header_partition {
+	background-color:#393939;
+	color:#FFF;
+	font-size:12pt;
+	font-weight:bold;
+	text-align:left;
+	border:ridge 1px #000;
+}
+.table_header_partition .not_over_link2 .is_link2 {
+	display:inline;
+	font-size:7pt;
+	padding:4px 4px 4px 4px;
+}
+.table_header_partition .not_over_link2 {
+	padding:2px 2px 2px 2px;
+	position:relative;
+	top:-3px;
+}
+.right_floater,.right_floater2,.right_floater3 {
+	float:right;
+}
+.right_floater {
+	padding-top:5px;
+}
+.right_floater2, .right_floater3 {
+	border:solid 1px #000;
+	color:#999;
+}
+table .right_floater3 {
+	background-color:#000;
+	color:#FFF;
+	font-size:7pt;
+	height:10px;
+}
+
+.right_floater2 {
+	margin:0px 5px 0px 0px;
+}
+.styled_link a, .right_floater, .right_floater2, .right_floater3 {
+	font-size:8pt;
+	font-weight:bold;
+	vertical-align:middle;
+	color:#999;
+	text-decoration:none;
+}
+
+.right_floater a,.table_fixed a, .styled_link a,.right_floater3 a, .right_floater3 .styled_link a {
+	text-decoration:none;
+	color:#999;
+	cursor:default;
+}
+
+.right_floater a:visited,.table_fixed a:visited, .styled_link a:visited, .right_floater3 a:visited, .right_floater3 .styled_link a:visited {
+	color:#999;
+}
+
+.right_floater a:hover,.table_fixed a:hover, .styled_link a:hover, .right_floater3 a:hover, .right_floater3 .styled_link a:hover {
+	color:#FFF;
+	cursor:pointer;
+}
+
+.secondary_functionality {
+	position:absolute;
+	top:0px;
+	right:-230px;
+}
+
+.secondary_functionality_nojs, .secondary_functionality {
+	width:214px;
+	margin-bottom:10px;
+}
+
+.table_fixed {
+	width:200px;
+	max-width:200px;
+	font-size:8pt;
+	
+}
+
+.table_fixed td {
+	font-size:7pt;
+	background-color:#333;
+	color:#FFF;
+	border:solid 1px #000;
+	padding:5px 5px 5px 5px;
+}
+
+.table_fixed th {
+	font-size:8pt;
+	background-color:#000;
+	color:#CCC;
+	text-align:center;
+}
+
+.table_fixed tr {
+	max-width:200px;
+}
+
+.div_commander, .secondary_functionality, .secondary_functionality_nojs, .secondary_functionality_nojs_nofix {
+	border:1px solid #000;
+	padding:1px 1px 1px 1px;
+	background-color:#999;
+}
+.div_commander {
+	margin-bottom:10px;
+}
+.secondary_functionality_nojs_nofix {
+	margin-bottom:10px;
+}
+#sec_func_inner, #sec_func_inner2 {
+	height:100%;
+}
+#sec_func_inner .table_header_summary .small_number, .table_header_summary .small_number_clickable {
+	max-width:400px;
+	overflow:none;
+}

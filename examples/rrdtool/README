@@ -1,0 +1,20 @@
+Example usage of PHP functions.php
+==================================
+
+The example here takes from
+
+  <http://www.ioncannon.net/system-administration/59/php-rrdtool-tutorial/>
+
+The examples in this directory requires that the user has php-rrdtool
+and it's dependancies installed.
+
+There are 3 simple scripts
+
+* create_rrdtool.php - creates a rrd file
+* update_rrdtool.php - updates the rrd file
+* render_rrdtool.php - renders the output for one day
+
+There is also a simple shell script to dump out what is stored in the
+rrd file, it is called fetch.sh.
+
+Included is also a sample summary.rrd database and output.
