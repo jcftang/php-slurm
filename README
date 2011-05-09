@@ -1,0 +1,78 @@
+Slurm PHP extension
+===================
+
+Requirements (tested with)
+
+* SLURM 2.2.0
+* PHP 5.1.6
+* APACHE (optional, but recommended)
+
+This was made primarily for SLURMWEB to connect to slurm. Any extra
+interactions are welcome.
+
+to compile...
+
+phpize
+./configure
+make
+
+this should make modules/slurm_php.so
+
+make install as root
+should install this where your extensions are in your php install
+
+in your php.ini file add the line
+
+extension=slurm_php.so
+
+and you should be able to use the functions here.
+
+Example PHP site
+================
+
+The examples directory contains a sample site which tries to show case
+as much of the php functionality as possible.
+
+Documentation
+=============
+
+The documentation can be created using PHPDocumentor 1.4.3, should you ever feel
+the need to regenerate the documentation, use the following command
+
+~~~~
+phpdoc -o HTML:frames:phpedit -d examples -po c,includes,objects -t docs \
+	-ti "php-slurm 1.0" 
+~~~~
+
+Administrator Notes
+===================
+
+To build an installable RPM from the tarball
+
+~~~~
+rpmbuild -ta php-slurm-1.0.tar.gz
+~~~~
+
+The above assumes that the appropriate compiler and rpm-build packages
+are installed on your system.
+
+
+TEST CASES
+==========
+
+It is assumed that the user has both slurmctld and slurmd is
+configured up with at least 1 partition and 1 node for these tests to
+pass.
+
+Developer Notes
+===============
+
+To clean up the directory to a clean state do the following
+
+~~~~
+phpize --clean
+~~~~
+
+The coding style that should be adopted is
+http://www.kernel.org/doc/Documentation/CodingStyle
+
