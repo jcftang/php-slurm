@@ -9,14 +9,21 @@ if [ $# -ne 1 ]; then
 fi
 
 if ! sed 's/^Version:.*$/Version:        '$1'/g' php-slurm.spec > .php-slurm.spec.new; then
-	echo "Could not replace PHPSLURM_VERSION variable." >&2
+	echo "Could not replace Version variable." >&2
 	exit 2
 fi
 mv .php-slurm.spec.new php-slurm.spec
+
+if ! sed 's/^#define SLURM_PHP_VERSION.*$/#define SLURM_PHP_VERSION "'$1'"/g' slurm_php.h > .slurm_php.h.new; then
+	echo "Could not replace SLURM_PHP_VERSION variable." >&2
+	exit 2
+fi
+mv .slurm_php.h.new slurm_php.h
 
 
 echo php-slurm-$1 > VERSION
 
 git add VERSION
 git add php-slurm.spec
+git add slurm_php.h
 git commit -m "Bumped version number to $1"
