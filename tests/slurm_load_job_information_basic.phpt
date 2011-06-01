@@ -1,7 +1,7 @@
 --TEST--
 Test function slurm_load_job_information() by calling it with its expected arguments
 --CREDIT--
-Peter Vermeulen <nmb_pv@hotmail.com>
+Peter Vermeulen <nmb.peterv@gmail.com>
 --SKIPIF--
 <?php
 extension_loaded("slurm") or die("skip slurm extension not loaded\n");
