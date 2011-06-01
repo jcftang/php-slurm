@@ -1,4 +1,4 @@
-release/php-slurm-*.tar.*
+php-slurm-*.tar.*
 tmp-php.ini
 *~
 config.h

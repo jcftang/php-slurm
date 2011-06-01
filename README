@@ -87,4 +87,4 @@ Doing a release
 * Finalise changes
 * Run bump-version script to make some version number changes to various files
 * Tag repository
-* cd into release, then run stable.sh to generate a tarball for redistribution
+* then run release-stable.sh to generate a tarball for redistribution
