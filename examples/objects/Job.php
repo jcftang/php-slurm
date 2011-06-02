@@ -119,6 +119,7 @@
 		*
 		* @access public
 		* @var string
+		*/
 		public $Reason		= NULL;
 
 		/**
