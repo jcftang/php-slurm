@@ -1,5 +1,7 @@
 --TEST--
 Test function slurm_get_node_names() by calling it with its expected arguments
+--CREDIT--
+Peter Vermeulen <nmb.peterv@gmail.com>
 --FILE--
 <?php
 

@@ -67,6 +67,10 @@ pass.
 Developer Notes
 ===============
 
+The 'develop' branch should be used for development work and the 'master'
+branch should always be a stable branch to make life easier for people
+who want to roll out the package.
+
 To clean up the directory to a clean state do the following
 
 ~~~~
@@ -76,3 +80,11 @@ phpize --clean
 The coding style that should be adopted is
 http://www.kernel.org/doc/Documentation/CodingStyle
 
+
+Doing a release
+===============
+
+* Finalise changes
+* Run bump-version script to make some version number changes to various files
+* Tag repository
+* then run release-stable.sh to generate a tarball for redistribution

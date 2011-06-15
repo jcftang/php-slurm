@@ -1,12 +1,12 @@
 Name:           php-slurm
-Version:        1.0
+Version:        1.0.1
 Release:        6%{?dist}
 Summary:        PHP extension for SLURM
 
 Group:          System
 License:        GPLv2
 #URL:           TBD
-Source0:        php-slurm-1.0.tar.bz2
+Source0:        php-slurm-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires: slurm-devel >= 2.2.0, php-devel, php-cli
