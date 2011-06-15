@@ -54,6 +54,7 @@
 #include <slurm/slurmdb.h>
 
 #include <time.h>
+#include <string.h>
 #include <stdlib.h>
 
 extern zend_module_entry slurm_php_module_entry;
