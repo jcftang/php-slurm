@@ -90,6 +90,11 @@ zend_module_entry slurm_php_module_entry = {
 ZEND_GET_MODULE(slurm_php)
 #endif
 
+#ifdef HAVE_XMALLOC_H
+#define malloc(size) xmalloc(size)
+#define free(ptr) xfree(ptr)
+#endif
+
 
 /*****************************************************************************\
  *	TODO
@@ -116,7 +121,7 @@ void parse_node_pointer(zval *sub_arr, node_info_t *node_arr)
 	zend_add_valid_assoc_time_string(sub_arr, "Boot Time",
 					 &node_arr->boot_time);
 	add_assoc_long(sub_arr, "#CPU'S", node_arr->cpus);
-	add_assoc_long(sub_arr, "#Cores/CPU", node_arr->cpus);
+	add_assoc_long(sub_arr, "#Cores/CPU", node_arr->cores);
 
 	if (node_arr->features == NULL) {
 		add_assoc_null(sub_arr, "Features");
