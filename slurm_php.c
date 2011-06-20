@@ -253,7 +253,7 @@ PHP_FUNCTION(slurm_ping)
 PHP_FUNCTION(slurm_slurmd_status)
 {
 	int err = SLURM_SUCCESS;
-	static slurmd_status_t *status_ptr = NULL;
+	slurmd_status_t *status_ptr = NULL;
 
 	err = slurm_load_slurmd_status(&status_ptr);
 	if (err) {
@@ -410,7 +410,7 @@ PHP_FUNCTION(slurm_print_partition_names)
 {
 	int err = SLURM_SUCCESS;
 	int i;
-	static partition_info_msg_t *prt_ptr = NULL;
+	partition_info_msg_t *prt_ptr = NULL;
 	char *tmp;
 
 	err = slurm_load_partitions((time_t) NULL, &prt_ptr, 0);
@@ -444,7 +444,7 @@ PHP_FUNCTION(slurm_get_specific_partition_info)
 {
 	long lngth = 0;
 	int err = SLURM_SUCCESS;
-	static partition_info_msg_t *prt_ptr = NULL;
+	partition_info_msg_t *prt_ptr = NULL;
 	partition_info_t *prt_data = NULL;
 	partition_info_t *prt_data_tmp = NULL;
 	char *name = NULL;
@@ -497,7 +497,7 @@ PHP_FUNCTION(slurm_get_partition_node_names)
 	char *prt_name = NULL;
 	long lngth = 0;
 	int err = SLURM_SUCCESS;
-	static partition_info_msg_t *prt_ptr = NULL;
+	partition_info_msg_t *prt_ptr = NULL;
 	partition_info_t *prt_data = NULL;
 	char *tmp = NULL;
 	int i = 0;
@@ -553,7 +553,7 @@ PHP_FUNCTION(slurm_get_node_names)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
-	static node_info_msg_t *node_ptr = NULL;
+	node_info_msg_t *node_ptr = NULL;
 	char *tmp;
 
 	err = slurm_load_node((time_t) NULL, &node_ptr, 0);
@@ -586,7 +586,7 @@ PHP_FUNCTION(slurm_get_node_elements)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
-	static node_info_msg_t *node_ptr;
+	node_info_msg_t *node_ptr;
 	zval *sub_arr = NULL;
 	char *tmp;
 
@@ -625,7 +625,7 @@ PHP_FUNCTION(slurm_get_node_element_by_name)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0,y = 0;
-	static node_info_msg_t *node_ptr;
+	node_info_msg_t *node_ptr;
 	char *node_name = NULL;
 	long lngth;
 	zval *sub_arr = NULL;
@@ -674,7 +674,7 @@ PHP_FUNCTION(slurm_get_node_state_by_name)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0,y = 0;
-	static node_info_msg_t *node_ptr;
+	node_info_msg_t *node_ptr;
 	char *node_name = NULL;
 	long lngth;
 
@@ -720,7 +720,7 @@ PHP_FUNCTION(slurm_get_node_states)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
-	static node_info_msg_t *node_ptr;
+	node_info_msg_t *node_ptr;
 	zval *sub_arr = NULL;
 
 	err = slurm_load_node((time_t) NULL, &node_ptr, 0);
@@ -753,7 +753,7 @@ PHP_FUNCTION(slurm_get_node_states)
 PHP_FUNCTION(slurm_get_control_configuration_keys)
 {
 	int err = SLURM_SUCCESS;
-	static slurm_ctl_conf_t *ctrl_conf_ptr;
+	slurm_ctl_conf_t *ctrl_conf_ptr;
 	List lst;
 	ListIterator iter = NULL;
 	key_pair_t *k_p;
@@ -781,7 +781,7 @@ PHP_FUNCTION(slurm_get_control_configuration_keys)
 PHP_FUNCTION(slurm_get_control_configuration_values)
 {
 	int err = SLURM_SUCCESS;
-	static slurm_ctl_conf_t *ctrl_conf_ptr;
+	slurm_ctl_conf_t *ctrl_conf_ptr;
 	List lst;
 	ListIterator iter = NULL;
 	key_pair_t *k_p;
@@ -818,7 +818,7 @@ PHP_FUNCTION(slurm_load_job_information)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
-	static job_info_msg_t *job_ptr;
+	job_info_msg_t *job_ptr;
 	zval *sub_arr = NULL;
 	char *tmp;
 
@@ -855,7 +855,7 @@ PHP_FUNCTION(slurm_load_partition_jobs)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
-	static job_info_msg_t *job_ptr;
+	job_info_msg_t *job_ptr;
 	zval *sub_arr = NULL;
 	char *tmp;
 	char *pname = NULL;
