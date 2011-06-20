@@ -74,42 +74,6 @@ typedef struct key_value {
 \*****************************************************************************/
 
 /*
- * now - Get the current time
- * RET time_t * : Pointer to the memory holding the current time
- */
-time_t now();
-
-/*
- * ld_partition_info - Issue slurm to load the partition info into part_pptr
- *
- * IN part_pptr - place to store a partition configuration pointer
- * IN show_flags - partition filtering options
- * RET 0 or a slurm error code
- * NOTE: free the response using slurm_free_partition_info_msg
- */
-int ld_partition_info(partition_info_msg_t **part_pptr, uint16_t show_flags);
-
-/*
- * ld_node_info - Issue slurm to load the node info into node_pptr
- *
- * IN node_pptr - place to store a node configuration pointer
- * IN show_flags - partition filtering options
- * RET 0 or a slurm error code
- * NOTE: free the response using slurm_free_node_info_msg
- */
-int ld_node_info(node_info_msg_t **node_pptr, uint16_t show_flags);
-
-/*
- * ld_job_info - Issue slurm to load the job info into job_pptr
- *
- * IN job_pptr - place to store a node configuration pointer
- * IN show_flags - partition filtering options
- * RET 0 or a slurm error code
- * NOTE: free the response using slurm_free_job_info_msg
- */
-int ld_job_info(job_info_msg_t **job_pptr, uint16_t show_flags);
-
-/*
  * parse_node_pointer - Parse a node pointer's contents into an
  *	assocative zval array where the key is descriptive to the
  *	value
@@ -139,21 +103,6 @@ void parse_assoc_array(char *char_arr, char *delims, zval *result_arr);
  * IN result_arr - numerically indexed array used to store the values in
  */
 void parse_array(char *char_arr, char *delims, zval *rslt_arr);
-
-/*
- * get_partition_from_name - Load the information about a specific partition
- *	 by passing on a character array containing the partition name
- *
- * IN name - character array containing the partition name
- * IN prt_data - pointer to store the partition information in (if a
- *	partition is found with that specific name)
- * IN prt_ptr - pointer containing all the partition information of all the
- *	 arrays
- * RET partition_info_t pointer that contains the partition data, or
- *      null if the partition wasn't found
- */
-partition_info_t *get_partition_from_name(
-	char *name, partition_info_t *prt_data, partition_info_msg_t *prt_ptr);
 
 /*
  * zend_add_valid_assoc_string - checks a character array to see if
