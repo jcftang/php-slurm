@@ -74,17 +74,17 @@ typedef struct key_value {
 \*****************************************************************************/
 
 /*
- * parse_node_pointer - Parse a node pointer's contents into an
+ * _parse_node_pointer - Parse a node pointer's contents into an
  *	assocative zval array where the key is descriptive to the
  *	value
  *
  * IN sub_arr - array to store the contents of the node pointer
  * IN node_arr - node pointer that needs parsing
  */
-void parse_node_pointer(zval *sub_arr, node_info_t *node_arr);
+void _parse_node_pointer(zval *sub_arr, node_info_t *node_arr);
 
 /*
- * parse_assoc_array - Parse a character array where the elements are
+ * _parse_assoc_array - Parse a character array where the elements are
  *	key-value pairs separated by delimiters into an associative
  *	array
  *
@@ -92,20 +92,20 @@ void parse_node_pointer(zval *sub_arr, node_info_t *node_arr);
  * IN delims - character array that contains the delimeters used in parsing
  * IN result_arr - associative array used to store the key_value pairs in
  */
-void parse_assoc_array(char *char_arr, char *delims, zval *result_arr);
+void _parse_assoc_array(char *char_arr, char *delims, zval *result_arr);
 
 /*
- * parse_array - Parse a character array where the elements are values
+ * _parse_array - Parse a character array where the elements are values
  *	 separated by delimiters into a numerically indexed array
  *
  * IN char_arr - character array that needs parsing
  * IN delims - character array that contains the delimeters used in parsing
  * IN result_arr - numerically indexed array used to store the values in
  */
-void parse_array(char *char_arr, char *delims, zval *rslt_arr);
+void _parse_array(char *char_arr, char *delims, zval *rslt_arr);
 
 /*
- * zend_add_valid_assoc_string - checks a character array to see if
+ * _zend_add_valid_assoc_string - checks a character array to see if
  *	it's NULL or not, if so an associative null is added, if not
  *	an associative string is added.
  *
@@ -113,10 +113,10 @@ void parse_array(char *char_arr, char *delims, zval *rslt_arr);
  * IN key - character array used as the associative key
  * IN val - character array to be validated and added as value if valid
  */
-void zend_add_valid_assoc_string(zval *rstl_arr, char *key, char *val);
+void _zend_add_valid_assoc_string(zval *rstl_arr, char *key, char *val);
 
 /*
- * zend_add_valid_assoc_time_string - checks a unix timestamp to see if it's
+ * _zend_add_valid_assoc_time_string - checks a unix timestamp to see if it's
  * 	0 or not, if so an associative null is added, if not a formatted string
  *	is added.
  *
@@ -126,7 +126,7 @@ void zend_add_valid_assoc_string(zval *rstl_arr, char *key, char *val);
  * NOTE : If you'd like to change the format in which the valid strings are
  * returned, you can change the TIME_FORMAT_STRING macro to the needed format
  */
-void zend_add_valid_assoc_time_string(zval *rstl_arr, char *key, time_t *val);
+void _zend_add_valid_assoc_time_string(zval *rstl_arr, char *key, time_t *val);
 
 
 /*****************************************************************************\
