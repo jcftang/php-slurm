@@ -387,8 +387,9 @@ PHP_FUNCTION(slurm_version)
 
 PHP_FUNCTION(slurm_hostlist_to_array)
 {
-	long lngth = 0;
+        long lngth = 0;
 	char *host_list = NULL;
+        char *name = NULL;
 	hostlist_t hl = NULL;
 	int hl_length = 0;
 	int i=0;
@@ -411,9 +412,8 @@ PHP_FUNCTION(slurm_hostlist_to_array)
 
 	array_init(return_value);
 	for (i=0; i<hl_length; i++) {
-		char *name = slurm_hostlist_shift(hl);
+		name = slurm_hostlist_shift(hl);
 		add_next_index_string(return_value, name, 1);
-		free(name);
 	}
 }
 
@@ -467,6 +467,7 @@ PHP_FUNCTION(slurm_print_partition_names)
 {
 	int err = SLURM_SUCCESS;
 	int i;
+        char *tmp = NULL;
 	partition_info_msg_t *prt_ptr = NULL;
 
 	err = slurm_load_partitions((time_t) NULL, &prt_ptr, 0);
@@ -477,8 +478,8 @@ PHP_FUNCTION(slurm_print_partition_names)
 
 	array_init(return_value);
 	for (i = 0; i < prt_ptr->record_count; i++) {
-		add_next_index_string(return_value,
-				      prt_ptr->partition_array[i].name, 1);
+                tmp = slurm_xstrdup(prt_ptr->partition_array[i].name);
+		add_next_index_string(return_value, tmp, 1);
 	}
 
 	slurm_free_partition_info_msg(prt_ptr);
@@ -539,6 +540,7 @@ PHP_FUNCTION(slurm_get_specific_partition_info)
 PHP_FUNCTION(slurm_get_partition_node_names)
 {
 	char *prt_name = NULL;
+        char *tmp = NULL;
 	long lngth = 0;
 	int err = SLURM_SUCCESS;
 	partition_info_msg_t *prt_ptr = NULL;
@@ -565,8 +567,9 @@ PHP_FUNCTION(slurm_get_partition_node_names)
 			if (!strcmp(prt_ptr->partition_array->name, prt_name)) {
 				prt_data = &prt_ptr->partition_array[i];
 				array_init(return_value);
+                                tmp = slurm_xstrdup(prt_data->nodes);
 				add_next_index_string(
-					return_value, prt_data->nodes, 1);
+					return_value, tmp, 1);
 				y++;
 				break;
 			}
@@ -588,6 +591,7 @@ PHP_FUNCTION(slurm_get_node_names)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
+        char tmp = NULL;
 	node_info_msg_t *node_ptr = NULL;
 
 	err = slurm_load_node((time_t) NULL, &node_ptr, 0);
@@ -598,8 +602,9 @@ PHP_FUNCTION(slurm_get_node_names)
 	if (node_ptr->record_count > 0) {
 		array_init(return_value);
 		for (i = 0; i < node_ptr->record_count; i++) {
-			add_next_index_string(
-				return_value, node_ptr->node_array[i].name, 1);
+                        tmp =
+                        slurm_xstrdup(node_ptr->node_array[i].name);
+			add_next_index_string(return_value, tmp, 1);
 		}
 	}
 
@@ -651,6 +656,7 @@ PHP_FUNCTION(slurm_get_node_element_by_name)
 	int i = 0,y = 0;
 	node_info_msg_t *node_ptr;
 	char *node_name = NULL;
+	char *tmp = NULL;
 	long lngth;
 	zval *sub_arr = NULL;
 
@@ -676,7 +682,8 @@ PHP_FUNCTION(slurm_get_node_element_by_name)
 			ALLOC_INIT_ZVAL(sub_arr);
 			array_init(sub_arr);
 			_parse_node_pointer(sub_arr, &node_ptr->node_array[i]);
-			add_assoc_zval(return_value, node_name,
+                        tmp = slurm_xstrdup(node_name);
+			add_assoc_zval(return_value, tmp,
 				       sub_arr);
 			break;
 		}
@@ -736,6 +743,7 @@ PHP_FUNCTION(slurm_get_node_states)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
+        char *tmp = NULL;
 	node_info_msg_t *node_ptr;
 
 	err = slurm_load_node((time_t) NULL, &node_ptr, 0);
@@ -745,8 +753,9 @@ PHP_FUNCTION(slurm_get_node_states)
 
 	array_init(return_value);
 	for (i = 0; i < node_ptr->record_count; i++) {
+                tmp = slurm_xstrdup_printf("%u", node_ptr->node_array[i].node_state);
 		add_next_index_long(return_value,
-				    node_ptr->node_array[i].node_state);
+				    tmp);
 	}
 
 	slurm_free_node_info_msg(node_ptr);
@@ -764,6 +773,7 @@ PHP_FUNCTION(slurm_get_node_states)
 PHP_FUNCTION(slurm_get_control_configuration_keys)
 {
 	int err = SLURM_SUCCESS;
+        char *tmp = NULL;
 	slurm_ctl_conf_t *ctrl_conf_ptr;
 	List lst;
 	ListIterator iter = NULL;
@@ -782,7 +792,8 @@ PHP_FUNCTION(slurm_get_control_configuration_keys)
 	iter = slurm_list_iterator_create(lst);
 	array_init(return_value);
 	while ((k_p = slurm_list_next(iter))) {
-		add_next_index_string(return_value, k_p->name, 1);
+                tmp = slurm_xstrdup(k_p->name);
+		add_next_index_string(return_value, tmp, 1);
 	}
 
 	slurm_free_ctl_conf(ctrl_conf_ptr);
@@ -792,6 +803,7 @@ PHP_FUNCTION(slurm_get_control_configuration_keys)
 PHP_FUNCTION(slurm_get_control_configuration_values)
 {
 	int err = SLURM_SUCCESS;
+        char *tmp = NULL;
 	slurm_ctl_conf_t *ctrl_conf_ptr;
 	List lst;
 	ListIterator iter = NULL;
@@ -813,7 +825,8 @@ PHP_FUNCTION(slurm_get_control_configuration_values)
 		if (k_p->value==NULL) {
 			add_next_index_null(return_value);
 		} else {
-			add_next_index_string(return_value, k_p->value, 1);
+                        tmp = slurm_xstrdup(k_p->value);
+			add_next_index_string(return_value, tmp, 1);
 		}
 	}
 
@@ -894,7 +907,6 @@ PHP_FUNCTION(slurm_load_partition_jobs)
 			tmp = slurm_xstrdup_printf(
 				"%u", job_ptr->job_array[i].job_id);
 			add_assoc_zval(return_value, tmp, sub_arr);
-			free(tmp);
 		}
 	}
 
