@@ -38,7 +38,7 @@
 #ifndef SLURM_PHP_H
 #define SLURM_PHP_H 1
 
-#define SLURM_PHP_VERSION "1.0.2"
+#define SLURM_PHP_VERSION "1.0.2.1"
 #define SLURM_PHP_EXTNAME "slurm"
 /*
  * Adjust this value to change the format of the returned string
