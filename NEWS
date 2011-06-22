@@ -1,0 +1,6 @@
+## Changes in php slurm 1.0.1 to 1.0.2
+
+* Micro format changes (cosmetic fixes)
+* Fixed some memory leaks
+* Packaging fixes
+* Changes to helper function names

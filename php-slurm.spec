@@ -1,5 +1,5 @@
 Name:           php-slurm
-Version:        1.0.1
+Version:        1.0.2
 Release:        6%{?dist}
 Summary:        PHP extension for SLURM
 
