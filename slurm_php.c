@@ -612,6 +612,7 @@ PHP_FUNCTION(slurm_get_node_elements)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
+        char *tmp = NULL;
 	node_info_msg_t *node_ptr;
 	zval *sub_arr = NULL;
 
@@ -626,8 +627,9 @@ PHP_FUNCTION(slurm_get_node_elements)
 			ALLOC_INIT_ZVAL(sub_arr);
 			array_init(sub_arr);
 			_parse_node_pointer(sub_arr, &node_ptr->node_array[i]);
+                        tmp = slurm_xstrdup_printf("%s", node_ptr->node_array[i].name);
 			add_assoc_zval(return_value,
-				       node_ptr->node_array[i].name,
+                                       tmp,
 				       sub_arr);
 		}
 	}
@@ -842,7 +844,6 @@ PHP_FUNCTION(slurm_load_job_information)
 				   "= ", sub_arr);
 		tmp = slurm_xstrdup_printf("%u", job_ptr->job_array[i].job_id);
 		add_assoc_zval(return_value, tmp, sub_arr);
-		free(tmp);
 	}
 
 	slurm_free_job_info_msg(job_ptr);
