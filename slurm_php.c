@@ -221,7 +221,7 @@ static void _parse_node_pointer(zval *sub_arr, node_info_t *node_arr)
 static void _parse_assoc_array(char *char_arr, char *delims, zval *result_arr)
 {
 	char *rslt = NULL;
-	char *tmp;
+	char *tmp = NULL;
 	int i = 0;
 
 	rslt = strtok(char_arr, delims);
@@ -257,7 +257,6 @@ static void _parse_array(char *char_arr, char *delims, zval *rslt_arr)
 		} else {
 			tmp = slurm_xstrdup(rslt);
 			add_next_index_string(rslt_arr, tmp, 1);
-			free(tmp);
 		}
 		rslt = strtok(NULL, delims);
 	}
@@ -265,10 +264,14 @@ static void _parse_array(char *char_arr, char *delims, zval *rslt_arr)
 
 static void _zend_add_valid_assoc_string(zval *rstl_arr, char *key, char *val)
 {
+        char *tmp = NULL;
+
 	if (!val)
 		add_assoc_null(rstl_arr, key);
-	else
-		add_assoc_string(rstl_arr, key, val, 1);
+	else {
+                tmp = slurm_xstrdup(val);
+		add_assoc_string(rstl_arr, key, tmp, 1);
+        }
 }
 
 
@@ -612,6 +615,7 @@ PHP_FUNCTION(slurm_get_node_elements)
 {
 	int err = SLURM_SUCCESS;
 	int i = 0;
+        char *tmp = NULL;
 	node_info_msg_t *node_ptr;
 	zval *sub_arr = NULL;
 
@@ -626,8 +630,9 @@ PHP_FUNCTION(slurm_get_node_elements)
 			ALLOC_INIT_ZVAL(sub_arr);
 			array_init(sub_arr);
 			_parse_node_pointer(sub_arr, &node_ptr->node_array[i]);
+                        tmp = slurm_xstrdup_printf("%s", node_ptr->node_array[i].name);
 			add_assoc_zval(return_value,
-				       node_ptr->node_array[i].name,
+                                       tmp,
 				       sub_arr);
 		}
 	}
@@ -842,7 +847,6 @@ PHP_FUNCTION(slurm_load_job_information)
 				   "= ", sub_arr);
 		tmp = slurm_xstrdup_printf("%u", job_ptr->job_array[i].job_id);
 		add_assoc_zval(return_value, tmp, sub_arr);
-		free(tmp);
 	}
 
 	slurm_free_job_info_msg(job_ptr);
