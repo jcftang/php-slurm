@@ -221,7 +221,7 @@ static void _parse_node_pointer(zval *sub_arr, node_info_t *node_arr)
 static void _parse_assoc_array(char *char_arr, char *delims, zval *result_arr)
 {
 	char *rslt = NULL;
-	char *tmp;
+	char *tmp = NULL;
 	int i = 0;
 
 	rslt = strtok(char_arr, delims);
@@ -257,7 +257,6 @@ static void _parse_array(char *char_arr, char *delims, zval *rslt_arr)
 		} else {
 			tmp = slurm_xstrdup(rslt);
 			add_next_index_string(rslt_arr, tmp, 1);
-			free(tmp);
 		}
 		rslt = strtok(NULL, delims);
 	}
@@ -265,10 +264,14 @@ static void _parse_array(char *char_arr, char *delims, zval *rslt_arr)
 
 static void _zend_add_valid_assoc_string(zval *rstl_arr, char *key, char *val)
 {
+        char *tmp = NULL;
+
 	if (!val)
 		add_assoc_null(rstl_arr, key);
-	else
-		add_assoc_string(rstl_arr, key, val, 1);
+	else {
+                tmp = slurm_xstrdup(val);
+		add_assoc_string(rstl_arr, key, tmp, 1);
+        }
 }
 
 
